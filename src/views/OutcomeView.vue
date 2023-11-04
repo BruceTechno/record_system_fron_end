@@ -1,7 +1,22 @@
-<script>
-export default {
-
+<script >
+import Modal from "../components/Modal.vue"
+export default{
+    components:{
+        Modal,
+    },
+    data() {
+        return {
+            isShow:false,
+        }
+    },
+    methods:{
+        modalSwitch(){
+            this.isShow = !this.isShow;
+        }
+    }
 }
+
+
 </script>
 
 <template>
@@ -17,9 +32,12 @@ export default {
         <select class="category-select" >
             <option value="3C產品">3C產品</option>
         </select>
-        <button type="button">新增分類</button>
+        <button type="button" @click="modalSwitch">新增分類</button>
     </div>
+  <!-- Modal -->
+  <Modal v-if="isShow" @clickToClose="modalSwitch">
 
+</Modal>
     <div class="cost">
         <label for="cost">花費金額</label>
         <input type="number" name="cost" id="cost">
@@ -40,6 +58,7 @@ export default {
     </div>
 
 </div>
+  
 </template>
 
 <style lang="scss" scoped>

@@ -1,23 +1,25 @@
-<script setup>
+<script >
+import { RouterLink } from 'vue-router';
 
 </script>
 
 <template>
   <h1>homeView</h1>
   <div class="wrapper">
-    <div class="income">
+  <RouterLink class="income"  to="/InComeView">
       <h1>收入</h1>
-    </div>
-    <div class="outcome">
+    </RouterLink>
+    <RouterLink class="outcome" to="/OutcomeView">
       <h1>支出</h1>
-    </div>
+    </RouterLink>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wrapper{
+.wrapper {
   display: flex;
 }
+
 .income,
 .outcome {
   width: 500px;
