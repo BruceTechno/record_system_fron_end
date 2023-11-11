@@ -3,7 +3,7 @@ export default {
 
     data() {
         return {
-            categoryList: ["記帳表", "健身表", "單字表"],
+            categoryList: ["accounting", "健身表", "單字表"],
             option:"",
             ctgName:null,
         }
@@ -31,6 +31,7 @@ export default {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
+                    alert(data)
                 })
         }
     }
