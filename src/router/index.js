@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import OutcomeView from '../views/OutcomeView.vue'
 import SearchView from '../views/SearchView.vue'
-
+import LoginView from '../views/LoginView.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -20,6 +20,11 @@ const router = createRouter({
       path: '/SearchView',
       name: 'SearchView',
       component: SearchView
+    },
+    {
+      path: '/LoginView',
+      name: 'LoginView',
+      component: LoginView
     },
   ]
 })

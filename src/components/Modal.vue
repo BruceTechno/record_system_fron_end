@@ -16,7 +16,7 @@ export default {
             console.log(this.option);
             console.log(this.ctgName);
             let body = {
-                userId:"test",
+                userId:"bruce",
                 ctgFor: this.option,
                 name: this.ctgName,
             }
@@ -31,7 +31,7 @@ export default {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    alert(data)
+                    alert(data.message)
                 })
         }
     }

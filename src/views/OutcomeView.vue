@@ -8,11 +8,11 @@ export default{
         return {
             //Req
             userId:null,
-            date:null,
+            date: new Date().toISOString().substring(0, 10),
             ctgId:null,
             cost:null,
             thing:null,
-            isRequire:null,
+            ynRequire:"Y",
             incomeOrOutcome:null,
             // page paramater
             isShow:false,
@@ -31,7 +31,7 @@ export default{
                 categoryId:this.ctgId,//
                 cost:this.cost,//花費
                 thing:this.thing,//做了什麼事
-                isRequire:this.isRequire,//是否必要花費
+                ynRequire:this.ynRequire,//是否必要花費
                 incomeOrOutcome:0,//是收入還是支出
             }
             console.log(body);
@@ -47,6 +47,7 @@ export default{
                 .then(data => {
                     console.log(data);
                     alert(data.message)
+                    this.$router.go(0)
                 })
         },
         getCtg(){
@@ -64,10 +65,14 @@ export default{
                 body: JSON.stringify(body)
             })
                 .then(res => res.json())
-                .then(data => {
-                    console.log(data.message);
-                    this.ctgList = data.categoryList
-                    console.log(this.ctgList);
+                .then(data => {                  
+                    if(data.message === 'Successful!!'){
+                        console.log(data.categoryList);
+                        this.ctgList = data.categoryList
+                        this.ctgId = this.ctgList[0].id;
+                    }
+                   
+                   
                 })
         }
     },
@@ -105,16 +110,16 @@ export default{
         <label for="thing">花費事項</label>
         <input type="text" name="thing" id="thing" v-model="thing">
 
-    </div><div class="isRequire">
-        <label for="isRequire">必要花費</label>
+    </div><div class="ynRequire">
+        <label for="ynRequire">必要花費</label>
 
-        <input type="radio" name="isRequire" id="true" value="true" v-model="isRequire">
-        <label for="true">是</label>
+        <input type="radio" name="ynRequire" id="ynRequireY" value="Y" v-model="ynRequire">
+        <label for="ynRequireY">是</label>
 
-        <input type="radio" name="isRequire" id="false" value="false" v-model="isRequire">
-        <label for="false">否</label>
+        <input type="radio" name="ynRequire" id="ynRequireN" value="N" v-model="ynRequire">
+        <label for="ynRequireN">否</label>
     </div>
-<button type="button" @click="addAccounting">新曾</button>
+<button type="button" @click="addAccounting">新增</button>
 </div>
   
 </template>
